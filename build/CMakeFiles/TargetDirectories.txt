@@ -1,0 +1,3 @@
+C:/Users/a-pfa/Documents/vw-beetle-digital-cluster/build/CMakeFiles/vw_beetle_cluster.dir
+C:/Users/a-pfa/Documents/vw-beetle-digital-cluster/build/CMakeFiles/edit_cache.dir
+C:/Users/a-pfa/Documents/vw-beetle-digital-cluster/build/CMakeFiles/rebuild_cache.dir
