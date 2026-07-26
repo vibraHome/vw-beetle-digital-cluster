@@ -1,0 +1,13 @@
+# ninja log v7
+35	741	8067624060905940	CMakeFiles/vw_beetle_cluster.dir/src/simulator.c.obj	6cf456bf669209e9
+11	540	8067901229926006	CMakeFiles/vw_beetle_cluster.dir/src/main.c.obj	a3a947f38e77c787
+9	528	8067846747618352	CMakeFiles/vw_beetle_cluster.dir/src/display.c.obj	bdf8d5fdaa7ec47d
+541	816	8067901235096749	vw_beetle_cluster.exe	d10450d2a7874eca
+6	263	8067956590216329	build.ninja	d796d4b0f13eb457
+6	263	8067956590216329	C:/Users/a-pfa/Documents/vw-beetle-digital-cluster/build/cmake_install.cmake	d796d4b0f13eb457
+10	710	8067956590743113	CMakeFiles/vw_beetle_cluster.dir/src/cluster_state.c.obj	873676fcb368e9d2
+6	714	8067956590703071	CMakeFiles/vw_beetle_cluster.dir/src/main.c.obj	a3a947f38e77c787
+714	1125	8067956597782594	vw_beetle_cluster.exe	65ee99e40181584a
+14	628	8067976151558190	CMakeFiles/vw_beetle_cluster.dir/src/cluster_state.c.obj	873676fcb368e9d2
+17	886	8068005127632153	CMakeFiles/vw_beetle_cluster.dir/src/cluster_state.c.obj	873676fcb368e9d2
+14	894	8068005127602135	CMakeFiles/vw_beetle_cluster.dir/src/simulator.c.obj	6cf456bf669209e9
