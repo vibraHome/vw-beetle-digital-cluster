@@ -82,22 +82,7 @@ int main(int argc, char *argv[])
                         generator = !generator;
                         break;
 
-                    case SDLK_5:
-                        simulator.fuel_percent -= 5.0f;
-
-                    if  (simulator.fuel_percent < 0.0f) {
-                        simulator.fuel_percent = 0.0f;
-                    }
-                        break;
-
-                    case SDLK_6:
-                        fuel_percent += 5.0f;
-
-                        if  (simulator.fuel_percent > 100.0f) {
-                            simulator.fuel_percent = 100.0f;
-                    }
-                        break;
-
+                    
                     default:
                         break;
                 }
@@ -136,6 +121,9 @@ int main(int argc, char *argv[])
         cluster_input.oil = oil;
         cluster_input.generator = generator;
 
+        cluster_input.coolant_warning =
+            simulator.coolant_warning;
+
         cluster_update(
             &cluster,
             &cluster_input,
@@ -153,7 +141,8 @@ int main(int argc, char *argv[])
             cluster_output.indicator,
             cluster_output.highbeam,
             cluster_output.oil,
-            cluster_output.generator
+            cluster_output.generator,
+            cluster_output.coolant_warning
         );
 
         display_render(

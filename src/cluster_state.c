@@ -198,6 +198,7 @@ void cluster_build_output(
     output->highbeam = false;
     output->oil = false;
     output->generator = false;
+    output->coolant_warning = false;
 
     if (controller == NULL || input == NULL) {
         return;
@@ -216,6 +217,7 @@ void cluster_build_output(
             output->highbeam = true;
             output->oil = true;
             output->generator = true;
+            output->coolant_warning = true;
             break;
 
         case CLUSTER_STATE_NEEDLE_SWEEP:
@@ -229,6 +231,8 @@ void cluster_build_output(
             output->highbeam = input->highbeam;
             output->oil = input->oil;
             output->generator = input->generator;
+            output->coolant_warning =
+                input->coolant_warning;
             break;
 
         case CLUSTER_STATE_RUNNING:
@@ -243,6 +247,8 @@ void cluster_build_output(
             output->highbeam = input->highbeam;
             output->oil = input->oil;
             output->generator = input->generator;
+                        output->coolant_warning =
+                input->coolant_warning;
             break;
 
         case CLUSTER_STATE_SHUTDOWN:

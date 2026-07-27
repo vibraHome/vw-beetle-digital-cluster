@@ -238,21 +238,36 @@ bool display_init(
     }
 
     display->generator = IMG_LoadTexture(
-        display->renderer,
-        "assets/generator.png"
+    display->renderer,
+    "assets/generator.png"
+);
+
+if (display->generator == NULL) {
+    fprintf(
+        stderr,
+        "Generator-Ladekontrollsymbol konnte nicht geladen werden: %s\n",
+        IMG_GetError()
     );
 
-    if (display->generator == NULL) {
-        fprintf(
-            stderr,
-            "Generator-Ladekontrollsymbol konnte nicht geladen werden: %s\n",
-            IMG_GetError()
-        );
+    display_destroy(display);
+    return false;
+}
 
-        display_destroy(display);
-        return false;
-    }
+display->coolant_warning = IMG_LoadTexture(
+    display->renderer,
+    "assets/coolant_warning.png"
+);
 
+if (display->coolant_warning == NULL) {
+    fprintf(
+        stderr,
+        "Kuehlmittelwarnsymbol konnte nicht geladen werden: %s\n",
+        IMG_GetError()
+    );
+
+    display_destroy(display);
+    return false;
+}
     SDL_SetTextureBlendMode(
         display->indicator,
         SDL_BLENDMODE_BLEND
@@ -273,10 +288,15 @@ bool display_init(
         SDL_BLENDMODE_BLEND
     );
 
+    SDL_SetTextureBlendMode(
+    display->coolant_warning,
+    SDL_BLENDMODE_BLEND
+    );
+
     return true;
 }
 
-vvoid display_render(
+void display_render(
     const Display *display,
     bool display_powered,
     float speed_kmh,
@@ -734,6 +754,13 @@ SDL_Rect generator_rect = {
     .h = 60
 };
 
+SDL_Rect coolant_warning_rect = {
+    .x = 200,
+    .y = 370,
+    .w = 75,
+    .h = 75
+};
+
     if (display->indicator != NULL &&
     display->indicator_on) {
         SDL_RenderCopy(
@@ -773,6 +800,17 @@ SDL_Rect generator_rect = {
             &generator_rect
         );
     }
+
+    if (display->coolant_warning != NULL &&
+    display->coolant_warning_on) 
+{
+    SDL_RenderCopy(
+        display->renderer,
+        display->coolant_warning,
+        NULL,
+        &coolant_warning_rect
+    );
+}
 }
 
 void display_set_indicators(
@@ -780,7 +818,8 @@ void display_set_indicators(
     bool indicator,
     bool highbeam,
     bool oil,
-    bool generator
+    bool generator,
+    bool coolant_warning
 )
 {
     if (display == NULL) {
@@ -791,6 +830,7 @@ void display_set_indicators(
     display->highbeam_on = highbeam;
     display->oil_on = oil;
     display->generator_on = generator;
+    display->coolant_warning_on = coolant_warning;
 }
 
 void display_destroy(Display *display)
@@ -799,6 +839,11 @@ void display_destroy(Display *display)
         return;
     }
 
+     if (display->coolant_warning != NULL) {
+        SDL_DestroyTexture(display->coolant_warning);
+        display->coolant_warning = NULL;
+    }
+    
     if (display->generator != NULL) {
         SDL_DestroyTexture(display->generator);
         display->generator = NULL;

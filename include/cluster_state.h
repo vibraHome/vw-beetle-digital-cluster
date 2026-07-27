@@ -24,6 +24,7 @@ typedef struct
     bool highbeam;
     bool oil;
     bool generator;
+    bool coolant_warning;
 } ClusterInput;
 
 typedef struct
@@ -47,6 +48,7 @@ typedef struct
     bool highbeam;
     bool oil;
     bool generator;
+    bool coolant_warning;
 } ClusterOutput;
 
 void cluster_init(

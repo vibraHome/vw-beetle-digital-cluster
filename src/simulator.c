@@ -9,7 +9,7 @@ void simulator_init(Simulator *simulator)
     simulator->speed_kmh = 0.0f;
     simulator->target_speed_kmh = 0.0f;
     simulator->fuel_percent = 75.0f;
-
+    simulator->coolant_warning = false;
     simulator->acceleration_kmh_per_second = 35.0f;
     simulator->braking_kmh_per_second = 50.0f;
     simulator->maximum_speed_kmh = 240.0f;
@@ -56,6 +56,14 @@ void simulator_handle_event(
                 simulator->fuel_percent = 100.0f;
             }
             break;
+
+            case SDLK_7:
+                simulator->coolant_warning =
+                !simulator->coolant_warning;
+            printf("Coolant: %d\n",
+           simulator->coolant_warning);
+            break;
+
 
             default:
                 break;

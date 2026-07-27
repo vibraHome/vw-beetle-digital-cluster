@@ -17,6 +17,7 @@ typedef struct
     SDL_Texture *highbeam;
     SDL_Texture *oil;
     SDL_Texture *generator;
+    SDL_Texture *coolant_warning;
 
     TTF_Font *font;
 
@@ -24,6 +25,7 @@ typedef struct
     bool highbeam_on;
     bool oil_on;
     bool generator_on;
+    bool coolant_warning_on;
 
     int width;
     int height;
@@ -52,7 +54,8 @@ void display_set_indicators(
     bool indicator,
     bool highbeam,
     bool oil,
-    bool generator
+    bool generator,
+    bool coolant_warning
 );
 
 void display_destroy(

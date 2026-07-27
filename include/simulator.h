@@ -7,6 +7,7 @@
 typedef struct {
     float speed_kmh;
     float fuel_percent;
+    bool coolant_warning;
     float target_speed_kmh;
     float acceleration_kmh_per_second;
     float braking_kmh_per_second;
