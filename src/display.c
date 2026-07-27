@@ -92,13 +92,14 @@ bool display_init(
     }
 
     display->window = SDL_CreateWindow(
-        title,
-        SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED,
-        width,
-        height,
-        SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI
-    );
+    title,
+    SDL_WINDOWPOS_CENTERED,
+    SDL_WINDOWPOS_CENTERED,
+    width,
+    height,
+    SDL_WINDOW_SHOWN |
+    SDL_WINDOW_FULLSCREEN_DESKTOP
+);
 
     if (display->window == NULL) {
         fprintf(
@@ -131,10 +132,10 @@ bool display_init(
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 
     SDL_RenderSetLogicalSize(
-        display->renderer,
-        width,
-        height
-    );
+    display->renderer,
+    800,
+    800
+);
 
     display->background = IMG_LoadTexture(
         display->renderer,
